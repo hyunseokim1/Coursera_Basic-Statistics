@@ -1,0 +1,507 @@
+<The Basics of R>
+
+How it works
+
+Instructions
+
+In the editor on the right there is already some sample code. Can you see which lines are actual R code and which are comments?
+Add a line of code that calculates the sum of 6 and 12, and hit the 'Submit Answer' button.
+
+3 + 4
+6 + 12
+
+---------------------------------------------------------------------------------------------------------------------------------
+Little arithmetics with R
+
+Instructions
+
+Type 2^5 in the editor to calculate 2 to the power 5.
+Type 28 %% 6 to calculate 28 modulo 6.
+Click 'Submit Answer' and have a look at the R output in the console.
+Note how the # symbol is used to add comments on the R code.
+
+# Addition
+5 + 5 
+
+# Subtraction
+5 - 5 
+
+# Multiplication
+3 * 5
+
+ # Division
+(5 + 5) / 2 
+
+# Exponentiation
+2 ^ 5
+
+# Modulo
+28 %% 6
+
+---------------------------------------------------------------------------------------------------------------------------------
+Documenting your code
+
+Instructions
+
+Add another comment in the editor on the right, Calculate 6 + 12, at the appropriate location.
+
+# Calculate 3 + 4
+3 + 4
+
+# Calculate 6 + 12
+6 + 12
+
+---------------------------------------------------------------------------------------------------------------------------------
+Variable assignment I
+
+Instructions
+
+Complete the code in the editor such that it assigns the value 42 to the variable x in the editor. 
+Click 'Submit Answer'. Notice that when you ask R to print x, the value 42 appears.
+
+# Assign the value 42 to x
+x <- 42
+
+# Print out the value of the variable x
+x
+
+---------------------------------------------------------------------------------------------------------------------------------
+Variable assignment II
+
+Instructions
+
+Create a variable called my_oranges and assign it the value of 6.
+Add the variables my_apples and my_oranges and have R simply print the result.
+Combine the variables my_apples and my_oranges into a new variable my_fruit, which is the total amount of fruits in your fruit basket.
+
+# Assign a value to the variables my_apples and my_oranges
+my_apples <- 5
+my_oranges <- 6
+
+
+# Add these two variables together and print the result
+my_apples + my_oranges
+
+# Create the variable my_fruit
+my_fruit = my_apples + my_oranges
+
+---------------------------------------------------------------------------------------------------------------------------------
+Back to Apples and Oranges
+
+Instructions
+
+Click 'Submit Answer' and read the error message. Make sure to understand why this did not work.
+Adjust the code so that R knows you have 6 oranges and thus a fruit basket with 11 pieces of fruit.
+
+# Assign a value to the variable called my_apples
+my_apples <- 5 
+
+# Print out the value of my_apples
+my_apples       
+
+# Assign a value to the variable my_oranges and print it out
+my_oranges <- 6 
+my_oranges 
+
+# New variable that contains the total amount of fruit
+my_fruit <- my_apples + my_oranges 
+my_fruit
+
+---------------------------------------------------------------------------------------------------------------------------------
+Discover Basic Data Types
+
+Instructions
+
+Change the value of the: - my_numeric variable to 42. - my_character variable to "forty-two". 
+Note that the quotation marks indicate that "forty-two" is a character. - my_logical variable to FALSE.
+
+# What is the answer to the universe?
+my_numeric <- 42
+
+# The quotation marks indicate that the variable is of type character
+my_character <- "forty-two"
+
+# Change the value of my_logical
+my_logical <- FALSE
+
+---------------------------------------------------------------------------------------------------------------------------------
+Coercion: Taming your data
+
+Instructions
+
+var1 is logical. Convert it to character and assign it to the variable var1_char.
+Next, see whether var1_char actually is a character by using the is.character() function on it.
+var2 is numeric. Convert it logical and assign it to the variable var2_log.
+Inspect the class of var2_log using class().
+Finally, var3 is of type character. Convert it to numeric and assign the result to var3_num. Was it successful?
+
+#Create variables var1, var2 and var3
+var1 <- TRUE
+var2 <- 0.3
+var3 <- "i"
+
+# var1 is logical; convert it to character: var1_char
+var1_char <- as.character(var1)
+var1_char
+# See whether var1_char is a character
+is.character(var1_char)
+
+# var2 is numeric; convert it to logical: var2_log
+var2_log <- as.logical(var2)
+var2_log
+# Inspect the class of var2_log
+class(var2_log)
+
+# var3 is character; convert it to numeric: var3_num
+ var3_num <- as.numeric(var3) 
+ var3_num
+ 
+ ---------------------------------------------------------------------------------------------------------------------------------
+ Create a vector I
+ 
+Instructions
+
+Complete the code such that boolean_vector contains the three elements: TRUE, FALSE and TRUE (in that order).
+
+numeric_vector <- c(1, 10, 49)
+character_vector <- c("a", "b", "c")
+
+# Complete the code for 'boolean_vector'
+boolean_vector <- c(TRUE, FALSE, TRUE)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Vectors II
+
+Instructions
+
+Select the letter "a" from character_vector
+Select the second and the third element of boolean_vector
+
+# A numeric vector containing 3 elements
+numeric_vector <- c(1, 10, 49)
+
+# a character vector containing 3 elements
+character_vector <- c("a", "b", "c")
+character_vector[c(1)]
+
+# Complete the code for 'boolean_vector'
+boolean_vector <- c(TRUE, FALSE, TRUE)
+boolean_vector[c(2,3)]
+
+---------------------------------------------------------------------------------------------------------------------------------
+Selection by comparison I
+
+Instructions
+
+Check which values in numeric_vector are larger than 10. Assign the result to the variable larger_than_ten.
+print the variable larger_than_ten to the console.
+
+# A numeric vector containing 3 elements
+numeric_vector <- c(1, 10, 49)
+larger_than_ten <- numeric_vector > 10
+print(larger_than_ten)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Selection by comparison II
+
+Instructions
+
+Print the items from numeric_vector that are larger than 10
+
+numeric_vector <- c(1, 10, 49)
+larger_than_ten <- numeric_vector > 10
+numeric_vector[larger_than_ten]
+
+---------------------------------------------------------------------------------------------------------------------------------
+Matrices
+
+Instructions
+
+Construct a matrix with 5 rows and 4 columns containing the numbers 1 up to 20 and assign it to the variable m. Specify the byrow argument to be TRUE
+Print m to the console
+
+# Construction of a matrix with 5 rows that contain the numbers 1 up to 20 and assign it to m
+m <- matrix(1:20, byrow = TRUE, nrow = 5, ncol = 4)
+
+# print m to the console
+print(m)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Factors
+
+Instructions
+
+Turn the vector student_status into a factor and put this in a variable called categorical_student
+Print the variable categorical_student
+
+# a vector called student_status
+student_status <- c("student", "not student", "student", "not student")
+
+# turn student_status into a factor and save it in the variable categorical_student
+categorical_student <- factor(student_status)
+
+# print categorical_student to the console
+print(categorical_student)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Dataframes: What's a data frame?
+
+Instructions
+
+# print mtcars to the console
+print(mtcars)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Inspecting dataframes
+
+There are several functions you can use to inspect your dataframe. To name a few
+
+head: this by default prints the first 6 rows of the dataframe
+tail: this by default prints the last 6 rows to the console
+str: this prints the structure of your dataframe
+dim: this by default prints the dimensions, that is, the number of rows and columns of your dataframe
+colnames: this prints the names of the columns of your dataframe
+
+# print the first 6 rows of mtcars
+print(head(mtcars))
+
+# print the structure of mtcars
+print(str(mtcars))
+
+# print the dimensions of mtcars
+print(dim(mtcars))
+
+---------------------------------------------------------------------------------------------------------------------------------
+Constructing a dataframe yourself
+
+# planets vector
+planets <- c("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+
+# type vector
+type <- c("Terrestrial planet", "Terrestrial planet", "Terrestrial planet", "Terrestrial planet", "Gas giant", "Gas giant", "Gas giant", "Gas giant")
+
+# diameter vector
+diameter <- c(0.382, 0.949, 1, 0.532, 11.209, 9.449, 4.007, 3.883)
+
+# rotation vector
+rotation <- c(58.64, -243.02, 1, 1.03, 0.41, 0.43, -0.72, 0.67)
+
+# rings vector
+rings <- c(FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE)
+
+# construct a dataframe planet_df from all the above variables
+planet_df <- data.frame(planets, type, diameter, rotation,
+ rings)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Indexing and selecting columns from a dataframe
+
+# select the values in the first row and second and third columns
+planet_df[1,2 :3]
+# select the entire third column
+planet_df[ ,3]
+
+---------------------------------------------------------------------------------------------------------------------------------
+Lists
+A list in R is similar to your to-do list at work or school: 
+the different items on that list most likely differ in length, characteristic, type of activity that has to do be done.
+
+A list in R allows you to gather a variety of objects under one name (that is, the name of the list) in an ordered way. 
+These objects can be matrices, vectors, data frames, even other lists, etc. It is not even required that these objects are related to each other.
+
+You can easily construct a list using the list() function. In this function you can wrap the different elements like so: list(item1, item2, item3).
+
+# Vector with numerics from 1 up to 10
+my_vector <- 1:10 
+
+# Matrix with numerics from 1 up to 9
+my_matrix <- matrix(1:9, ncol = 3)
+
+# First 10 elements of the built-in data frame 'mtcars'
+my_df <- mtcars[1:10,]
+
+# Construct my_list with these different elements:
+my_list <- list(my_vector, my_matrix, my_df)
+
+# print my_list to the console
+print(my_list)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Selecting elements from a list
+
+Your list will often be built out of numerous elements and components. 
+Therefore, getting a single element, multiple elements, or a component out of it is not always straightforward. 
+One way to select a component is using the numbered position of that component. For example, to "grab" the first component of my_list you type my_list[[1]]
+
+Another way to check is to refer to the names of the components: my_list[["my_vector"]] selects the my_vector vector.
+
+A last way to grab an element from a list is using the $ sign. The following code would select my_df from my_list: my_list$my_df.
+
+Besides selecting components, you often need to select specific elements out of these components. 
+For example, with my_list[[1]][1] you select from the first component of my_list the first element. This would select the number 1.
+ 
+# Vector with numerics from 1 up to 10
+my_vector <- 1:10 
+
+# Matrix with numerics from 1 up to 9
+my_matrix <- matrix(1:9, ncol = 3)
+
+# First 10 elements of the built-in data frame 'mtcars'
+my_df <- mtcars[1:10,]
+
+# Construct list with these different elements:
+my_list <- list(my_vector, my_matrix, my_df)
+
+# Grab the second element of my_list and print it to the console
+print(my_list[[2]])
+
+# Grab the first column of the third component of `my_list` and print it to the console
+print(my_list[[3]][ ,1])
+ 
+---------------------------------------------------------------------------------------------------------------------------------
+<Introduction to R continued>
+
+Making a start with functions: Getting help
+
+# ask for help on the mean function
+help(mean)
+
+# ask for the arguments used by the mean function
+args(mean)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Functions continued
+
+# a grades vector
+grades <- c(8.5, 7, 9, 5.5, 6)
+
+# calculate the mean of grades using matching by name
+mean(x = grades)
+
+# calculate the mean of grades using matching by position
+mean(grades)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Functions continued II
+When we looked at the documentation of mean. The documentation showed us the following method:
+
+mean(x, trim = 0, na.rm = FALSE, ...)
+
+As you can see, both trim and na.rm have default values. However, x doesn't. This makes x a required argument. 
+That means that the function mean will throw an error if x hasn't been specified. Trim and na.rm are however optional arguments
+with default values and can be changed or specified by the user.
+
+Na.rm can be changed by the user if a given vector contains missing values. 
+For instance, if a the aforementioned vector called temperature would have missing values, calling mean on it would throw an output of NA. 
+If you want the mean function to exclude the NA values when calculating the mean, you can specify na.rm = TRUE. Let's bring this into practice:
+
+# a grades vector
+grades <- c(8.5, 7, 9, NA, 6)
+
+mean(grades, trim=0, na.rm=FALSE)
+mean(grades, trim=0, na.rm=TRUE)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Making your own functions
+During the last 3 exercises, we have been using existing functions. However, you can also write your own functions. 
+You can define a function using function() code chunk. For instance, look at the code below to see a function that takes 2 parameters, a and b, sums them, and returns them.
+
+sum_a_b <- function(a, b){
+  return (a + b)
+}
+You could call this function and assign its result to the variable result, using the following code: result = sum_a_b(4, 5)
+
+This would put the value of 9 into the variable result. Off you go; now it's your turn !
+
+# make a function called multiply_a_b
+multiply_a_b <- function(a, b){
+    return(a * b)
+}
+
+# call the function multiply_a_b and store the result into a variable result
+result = multiply_a_b(a=3, b=7)
+
+---------------------------------------------------------------------------------------------------------------------------------
+Getting your data into R
+One important thing before you actually do analyses on your data, is that you will need to get your data into R. 
+R contains many functions to read in data from different formats. To name only a few:
+
+read.table: Reads in tabular data such as txt files
+read.csv: Read in data from a comma-separated file format
+readWorksheetFromFile : Reads in an excel worksheet
+read.spss: Reads in data from .sav SPSS format.
+
+# load in the data and store it in the variable cars
+cars <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/uva/mtcars.csv")
+# print the first 6 rows of the dataset using the head() function
+print(head(cars))
+
+---------------------------------------------------------------------------------------------------------------------------------
+Reading in your own data
+In the last exercise, you just read in your first dataset. All you needed to specify was the "address" where the dataset could be found. 
+However, sometimes data isn't stored into the most convenient format. For instance, sometimes the separator that separates all the different cells is different than you would expect.
+
+You can specify the separator in your read.csv function using the sep argument. 
+By default, this argument for csv files is a comma. You can however easily change this to a tab by using the following code: sep = '\t'. 
+In the current exercise, you will be working with the following url:
+
+# load in the dataset
+cars <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/uva/mtcars_semicolon.csv", sep= ";")
+
+# print the first 6 rows of the dataset
+print(head(cars))
+
+---------------------------------------------------------------------------------------------------------------------------------
+Working directories in R
+In the previous assignments, we practised reading in files in R. So far, all of these files were on the internet. 
+However, if you would work with R studio on your own computer, you would probably like to read in local files.
+
+When reading in local files, it's good to have an idea what your working directory is. 
+Your working directory is basically the part of your file system that R will look for files. 
+Usually this is something along the lines of C:/Users/Username/documents. Of course this working directory is not static and can be changed by the user.
+
+In R there are two important functions:
+
+getwd(): This function will retrieve the current working directory for the user
+setwd(): This functions allows the user to set her own working directory
+
+# retrieve the current working directory
+getwd()
+
+---------------------------------------------------------------------------------------------------------------------------------
+Changing working directories in R
+
+# print your current working directory
+print(getwd())
+
+
+# set the working directory again to the output of your current working directory
+setwd(getwd())
+
+---------------------------------------------------------------------------------------------------------------------------------
+Checking files in your working directory
+
+# list all the files in the working directory
+list.files()
+
+# read in the cars dataset and store it in a variable called cars
+cars <- read.csv("cars.csv", sep=";")
+
+# print the first 6 rows of cars
+print(head(cars))
+
+---------------------------------------------------------------------------------------------------------------------------------
+Importing R packages
+Although base R comes with a lot of useful functions, you will not be able to fully leverage the full power of R without being able to import R modules developed by others. 
+Imagine we want to do some great plotting and we want to use ggplot2 for it. If we want to do so, we need to take 2 steps:
+
+Install the package ggplot2 using install.packages("ggplot2")
+Load the package ggplot2 using library(ggplot2) or require(ggplot2)
+In datacamp however, most packages are already installed and readily available. As such, you won't need to run install.packages()
+
+# load the ggplot2 package using the library function
+library(ggplot2)
+
+# load the ggplot2 package using the require function
+require(ggplot2)
+
