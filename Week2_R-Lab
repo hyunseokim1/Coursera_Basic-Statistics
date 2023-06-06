@@ -1,0 +1,213 @@
+[Scatterplots]
+Instructions
+
+In your script, make a scatterplot of women with weight on the x-axis, and height on the y-axis.
+Use main = *title here* inside plot() to add the title "Heights and Weights"
+
+<Code>
+# Plot height and weight of the "women" dataset. Make the title "Heights and Weights"
+plot(women$weight, women$height, main="Heights and Weights")
+
+-----------------------------------------------------------------------------------------------------------
+[Making a Contingency Table]
+Instructions
+
+Make a contingency table with amount of tobacco smoked as rows, and education as columns
+
+<code>
+# Make a contingency table of tobacco consumption and education
+table(smoking$tobacco,smoking$student)
+-----------------------------------------------------------------------------------------------------------
+[Calculating Percentage From Your Contingency Table]
+Instructions
+
+In your console, calculate the percentage of high school students who smoke 0-9g of tobacco per day.
+In your console, calculate what percentage of students who smoke the most are in university.
+Type your answers to one decimal place (without a percentage symbol) into your script
+
+<code>
+# What percentage of high school students smoke 0-9g of tobacco?
+table(smoking$tobacco,smoking$student)
+total <- sum(table(smoking$tobacco,smoking$student)[ ,1])
+smoke_highs <- table(smoking$tobacco,smoking$student)[1,1]
+round(smoke_highs/total, digits = 3) * 100
+
+Answer : 38.6
+
+# Of the students who smoke the most, what percentage are in university?
+table(smoking$tobacco,smoking$student)
+smoke_most <- sum(table(smoking$tobacco,smoking$student)[3, ])
+smoke_uni <- table(smoking$tobacco,smoking$student)[3,2]
+round(smoke_uni/smoke_most, digits = 3) * 100
+
+Answer : 57.7
+
+-----------------------------------------------------------------------------------------------------------
+[Calculating Correlation Using R]
+We can calculate the correlation in R using the function cor(), which takes your two variables as it's first argument. 
+Try it out on the variables shown in the graph.
+
+Instructions
+
+In your script, calculate the correlation between var1 and var2 (these are saved in your console already)
+
+<code>
+# Calculate the correlation between var1 and var2
+cor(var1,var2)
+
+-----------------------------------------------------------------------------------------------------------
+[Finding The Line]
+Instructions
+
+y1 contains the predicted values of y according to line 1, y2 contains the predictes value of y according to line 2, 
+and y contains the actual observed values of variable y.
+In your script, calculate the squared error of line 1 and line 2.
+Take a look at the output!
+
+<code>
+# predicted values of y according to line 1
+y1 <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+# predicted values of y according to line 2
+y2 <- c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+
+# actual values of y
+y <- c(3, 2, 1, 4, 5, 10, 8, 7, 6, 9) 
+
+# calculate the squared error of line 1
+sum((y-y1)^2)
+
+# calculate the squared error of line 2
+sum((y-y2)
+
+-----------------------------------------------------------------------------------------------------------
+[Interpreting The Line]
+# How prosocial would we predict someone to be when they recieve 6 units of money?
+6
+
+# How prosical was the person who recieved 6 units of money in our study?
+10
+
+-----------------------------------------------------------------------------------------------------------
+[The Regression Equation]
+The regression equation is Y = a + bx, where a is the intercept and b is the slope of the line. 
+Imagine we are investigating how extraversion affects risk taking. 
+According to the regression formula, someone with an extraversion level of 0 will have a risk taking level of 3, 
+and with every single unit increase in extraversion, risk taking increases by 3.3.
+Instructions
+
+Use the information you have to establish the values of a and b.
+In your console, use your regression equation to calculate the expected level of risk taking of someone with an extraversion level of 7.
+Report this value in your script
+
+<code>
+# What is the risk taking level of a person with an extraversion level of 7?
+x <- 7
+y = 3 + 3.3 * x
+print(y)
+
+Answer : 26.1
+
+-----------------------------------------------------------------------------------------------------------
+[Finding The Regression Coefficients in R]
+We can find the regression coefficients for our data using the lm() function, which takes our model as the first argument: 
+first the y variable, followed by a ~ symbol, then the x variable. For instance: lm(y ~ x). 
+The output labels the value of the intercept with 'intercept', and the value of the slope with the name of the independent variable. 
+Let's try this out with our study that investigated how money (independent variable) predicted prosocial behavior (dependent variable).
+
+Instructions
+
+In your script, write a line of code using the lm() function to find the regression coefficients 
+for how much money predicts prosocial behavior
+Take a look at the output
+
+<code>
+# Our data
+money <- c(1,2,3,4,5,6,7,8,9,10)
+prosocial <- c(3, 2, 1, 4, 5, 10, 8, 7, 6,9)
+# Find the regression coefficients
+lm(prosocial ~ money)
+
+-----------------------------------------------------------------------------------------------------------
+[Using lm() To Add A Regression Line To Your Plot]
+In the last exercise you used lm() to obtain the coefficients for your model's regression equation, 
+in the format lm(y ~ x). takes the y variabWe can store this output and use it to add the regression line to your scatterplots! 
+After you have created your scatterplot, you can add a line using the function abline().
+abline() takes the intercept of the line as its first argument, and the slope of the line as its second argument. 
+This makes it a pretty good candidate for storing your lm() output as an object, and putting it straight into abline. 
+Let's try this out!
+
+<code>
+# Your plot
+plot(money, prosocial, xlab = "Money", ylab = "Prosocial Behavior")
+# Store your regression coefficients in a variable called "line"
+line <- lm(prosocial~money)
+
+# Use "line" to tell abline() to make a line on your graph
+abline(line)
+
+-----------------------------------------------------------------------------------------------------------
+[Adding A Line]
+We can use abline() to add any line we like, as long as the first argument is the intercept and the second is the slope. 
+Let's try it out! money and prosocial are still saved in your console.
+
+<code>
+# Your plot
+plot(money, prosocial, xlab = "Money", ylab = "Prosocial Behavior")
+# Your regression line
+line <- lm(prosocial ~ money)
+abline(line)
+# Add a line that shows the mean of the dependent variable
+abline(mean(prosocial),0)
+
+-----------------------------------------------------------------------------------------------------------
+[R Squared I]
+Instructions
+
+In your script, calculate the R squared of the relationship between money and prosocial (saved in your console).
+Use the cor() function to find the correlation.
+
+# Calculate the R squared of prosocial and money
+cor(prosocial, money)^2
+
+-----------------------------------------------------------------------------------------------------------
+[Putting It Together: Regression]
+<code>
+# your data
+money <- c(4, 3, 2, 2, 8, 1, 1, 2, 3, 4, 5, 6, 7, 9, 9, 8, 12)
+education <- c(3, 4, 6, 9, 3, 3, 1, 2, 1, 4, 5, 7, 10, 8, 7, 6, 9)
+
+# calculate the correlation between X and Y
+cor(money,education)
+
+# save regression coefficients as object "line"
+line <- lm(money~education)
+
+# print the regression coefficients
+line
+
+# plot Y and X
+plot(education,money,main="My Scatterplot")
+
+# add the regression line
+abline(line)
+
+-----------------------------------------------------------------------------------------------------------
+[Putting It Together: Contingency Tables]
+# Percentage of people with high money that are university educated
+td
+high_univ <- td[1,2]
+high_total <- sum(td[1, ])
+round(high_univ/high_total, digits=3)*100
+
+Answer : 83.3
+
+# Percentage of people with low money that are high schol educated
+low_highs <- td[2,1]
+low_total <- sum(td[2, ])
+round(low_highs/low_total, digits=3)*100
+
+Answer : 72.7
+
+# What kind of education is linked to more money?
+"university"
