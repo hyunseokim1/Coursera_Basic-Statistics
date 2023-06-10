@@ -1,0 +1,173 @@
+[Probability mass and density functions]
+
+Using the barplot function, make a probability histrogram of the above above probability mass function. 
+Specify the height of the bars with the y variable and the names of the bars (names.arg), that is, 
+the labels on the x axis, with the x variable in your dataframe.
+
+<code>
+# the data frame
+data <- data.frame(outcome = 0:5, probs = c(0.1, 0.2, 0.3, 0.2, 0.1, 0.1))
+
+# make a histogram of the probability distribution
+barplot(height = data$probs, names.arg = data$outcome)
+
+-------------------------------------------------------------------------------------------------------------
+[Probability mass and density functions (2)]
+
+Check the documentation of the the dnorm function using help(dnorm)
+Now calculate the density of the data vector and store it in a vector called density
+Finally make a plot with as x variable the data vector and as y variable the density variable
+
+<code>
+# simulating data
+set.seed(11225)
+data <- rnorm(10000)
+
+# check for documentation of the dnorm function
+help(dnorm)
+
+# calculate the density of data and store it in the variable density
+density <- dnorm(data, mean = 0, sd = 1, log = FALSE)
+
+# make a plot with as x variable data and as y variable density
+plot(x = data, y = density)
+
+-------------------------------------------------------------------------------------------------------------
+[The cumulative probability distribution]
+
+Calculate the probability that a variable x is smaller or equal to two. Put the result in the variable prob. 
+You can use the values from the table displayed above.
+Calculate the cumulative probability that a variable x is respectively 0, smaller or equal to one, 
+smaller or equal to two, and smaller or equal to three. Use the cumsum() functions for this and print the 
+output to the console.
+
+<code>
+# probability that x is smaller or equal to two
+prob <- (0.1 + 0.2 + 0.3)
+prob
+
+#' probability that x is 0, smaller or equal to one,
+#' smaller or equal to two, and smaller or equal to three
+cumsum(c(0.1,0.2,0.3,0.2))
+
+-------------------------------------------------------------------------------------------------------------
+[Summary statistics: The mean]
+
+<code>
+# calculate the expected probability value and assign it to the variable expected_score
+data
+expected_score <- sum(data$outcome * data$probs)
+# print the variable expected_score
+expected_score
+
+-------------------------------------------------------------------------------------------------------------
+[Summary statistics: Variance and the standard deviation]
+
+<code>
+# the mean of the probability mass function
+expected_score <- sum(data$outcome * data$probs)
+
+# calculate the variance and store it in a variable called variance
+variance <- sum((data$outcome - expected_score)^2 * data$probs)
+variance
+# calculate the standard deviation and store it in a variable called std
+std <- sqrt(variance)
+std
+
+-------------------------------------------------------------------------------------------------------------
+[The normal distribution]
+
+Answer : The probability is 0.815
+
+-------------------------------------------------------------------------------------------------------------
+[The normal distribution and cumulative probability]
+
+In the previous assignment we calculated probabilities according to the normal distribution by looking at an image.
+However, it is not always as simple as that. Sometimes we deal with cases where we want to know the probability 
+that a normally distributed variable is between a certain interval. Let's work with an example of female hair length.
+
+Hair length is considered to be normally distributed with a mean of 25 centimeters and a standard deviation of 5. 
+Imagine we wanted to know the probability that a woman's hair length is less than 30. We can do this in R using 
+the pnorm() function. This function calculates the cumultative probability. We can use it the following way: 
+pnorm(30, mean = 25, sd = 5). If you wanted to calculate the probability of a woman having a hair length larger
+or equal to 30 centimers, you can set the lower.tail argument to FALSE. 
+For instance, pnorm(30, mean = 25, sd = 5, lower.tail = FALSE). Let's visualize this. 
+Note that the first example is visualized on the left, while the second example is visualized on the right:
+
+Instructions
+
+Calculate the probability of a woman having a hair length less than 20 centimeters using a mean of 25 and 
+a standard deviation of 5. Use the pnorm() function and round the value to two decimals.
+
+<code>
+# probability of a woman having a hair length of less than 20 centimeters
+round(pnorm(20, mean=25, sd=5, lower.tail = TRUE),2)
+
+-------------------------------------------------------------------------------------------------------------
+[The normal distribution and quantiles]
+
+Calculate the 85th percentile of the distribution of female hair length and round this value to two decimals. 
+Note that the mean is 25 and the standard deviation is 5
+
+<code>
+# 85th percentile of female hair length
+qnorm(0.85, mean=25, sd=5)
+
+-------------------------------------------------------------------------------------------------------------
+[The normal distribution and Z scores]
+
+Imagine we have a woman with a hair length of 38 centimers and the average hair length was 25 centimers 
+and the standard deviation was 5 centimers. Calculate the Z value for this woman and store it in the variable z_value. 
+Round z_value to one decimal.
+
+<code>
+# calculate the z value and store it in the variable z_value
+z_value <- round((38 - 25)/5, 1)
+z_value
+
+-------------------------------------------------------------------------------------------------------------
+[The binomial distribution]
+
+Consider an example where we have made an exam consisting of 25 multiple choice questions. 
+Each questions has 5 possible answers. This means that the probability of answering a question correctly 
+by chance is 0.2. Calculate the mean of this distribution and store it in a variable called mean_chance
+
+Calculate the standard deviation of this distribution and store it in the variable std_chance.
+
+<code>
+# calculate the mean and store it in the variable mean_chance
+mean_chance <- 25 * 0.2
+mean_chance
+
+# calculate the standard deviation and store it in the variable std_chance
+std_chance <- sqrt(25 * 0.2 * 0.8)
+std_chance
+
+-------------------------------------------------------------------------------------------------------------
+[Calculating probabilities of binomial distributions in R]
+
+Look at the documentation of the functions dbinom() and pbinom(). Calculate the exact probability of answering
+5 questions correctly and store this in the variable five_correct
+Calculate the cumulative probability of answering at least 5 questions correctly and store 
+this in the variable atleast_five_correct
+
+<code>
+# probability of answering 5 questions correctly
+dbinom
+five_correct <- dbinom(5, 25, prob = 0.2, log = FALSE)
+five_correct
+# probability of answering at least 5 questions correctly
+pbinom 
+atleast_five_correct <- pbinom(4, 25, prob=0.2, lower.tail = FALSE)
+atleast_five_correct
+
+-------------------------------------------------------------------------------------------------------------
+[Quantiles and the binomial distribution]
+
+Calculate the 60th percentile of the binomial distribution of exam questions. 
+Note that the number of questions is 25 and the probability of guessing a question correctly is 0.2.
+
+<code>
+# calculate the 60th percentile
+qbinom(0.6,25,0.2, lower.tail = TRUE)
+
