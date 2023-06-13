@@ -1,0 +1,184 @@
+[Sampling from the population]
+
+Make sure not to remove the set.seed(11225) code. This makes sure that you will get the same results as the solution code
+Sample 100 values from the dataset scandinavia_data and store this in a variable first_sample
+Calculate the mean of first sample and print the result.
+
+<code>
+# variable scandinavia_data contains the beard lengths of scandinavian male population
+set.seed(11225)
+first_sample <- sample(scandinavia_data, size = 100)
+mean(first_sample)
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[Using a for loop]
+
+Look at the example in the sample code and think what this code will do. Subsequently, press "Submit Answer".
+
+<code>
+# initialize an empty vector
+new_number <- NULL
+
+# run an operation 10 times.
+# The ith position of new number will be set to i
+# at the end of the loop, the vector new_number is printed
+for (i in 1:10){
+  new_number[i] <- i
+}
+
+print(new_number)
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[Mean of the sampling distribution]
+
+Calculate the mean of the population and print it. Note that the population is included in the variable scandinavia_data.
+Calculate the mean of the sample means and print it. Note that the sample means are included in the variable sample_means.
+Note how close the two are
+
+<code>
+# empty vector sample means
+sample_means <- NULL
+
+# take 200 samples from scandinavia_data
+for (i in 1:500){
+  samp <- sample(scandinavia_data, 200)
+  sample_means[i] <- mean(samp)
+}
+
+# calculate the population mean, that is, the mean of scandinavia_data and print it
+mean(scandinavia_data)
+
+# calculate the mean of the sample means, that is, sample_means
+mean(sample_means)
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[Standard deviation of the sampling distribution]
+
+<code>
+# standard deviation of the population
+population_sd <- sd(scandinavia_data)
+population_sd
+
+# standard deviation of the sampling distribution
+sampling_sd <- sd(scandinavia_data) / sqrt(200)
+sampling_sd
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[Standard deviation of the sampling distribution (2)]
+
+The standard deviation of the sampling distribution, also known as standard error, is affected by the values of:
+
+The population standard deviation
+The sample size of the samples taken from the population
+What happens to the standard error when i) the standard deviation of the population becomes larger, 
+ii) the size of the sample becomes larger
+
+Answer : The standard error becomes larger. The standard error becomes smaller.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[The central limit theorem]
+
+Make a histogram of the variable household_income and see how the population is skewed to the right.
+Make a histogram of the variable sample_means. Can you see how this variable looks normally distributed?
+You can press on the button "Previous plot" to check the previous histogram.
+
+<code>
+# empty vector sample means
+sample_means <- NULL
+
+# take 200 samples from scandinavia_data
+for (i in 1:1000){
+  samp <- sample(household_income, 200)
+  sample_means[i] <- mean(samp)
+}
+
+# make a histogram of household_income
+hist(household_income)
+# make a histogram of sample_means
+hist(sample_means)
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[Zscores]
+To illustrate the concept of the Z score, let's go back to our scandinavia_data dataset. 
+In this population of male hipsters from Scandinavia, the average beard length is 25. 
+The standard deviation in the population is 3.47. Suppose we had a hipster with a beard length of 32mm, 
+this would be unusual for this population and thus would have a rather high Z score.
+
+<code>
+# z score of hipster with a beard of 32 millimeter
+z_score <- (32 - 25) / (3.47)
+
+# print the variable z_score to the console
+print(z_score)
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[Calculating areas with subjects]
+Recall that the z score for the scandinavian hipster in the previous exercise was 2.02. 
+Calculate the area left of this observation by specifying lower.tail = TRUE in pnorm and print this probability.
+Now calculate the area under the curve right of this observation by specifying lower.tail = FALSE and print this probability.
+
+<code>
+# calculate the area under the curve left of the observation
+pnorm(2.02, lower.tail = TRUE)
+# calculate the area under the curve right of the observation
+pnorm(2.02, lower.tail = FALSE)
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[Interpreting areas under the curve]
+
+Answer : This represents the probability of finding a hipster with a beard length larger or equal to 32.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[Calculating areas with sample means]
+
+<code>
+# calculate the population mean
+population_mean <- mean(scandinavia_data)
+
+# calculate the population standard deviation
+population_sd <- sd(scandinavia_data)
+
+# calculate the standard deviation of the sampling distribution and put it in a variable sampling_sd
+sampling_sd <- population_sd / sqrt(50)
+sampling_sd
+# calculate the Z score and put in a variable called z_score
+z_score <- (26 - population_mean) / sampling_sd
+z_score
+
+# cumulative probability calculation. Don't forget to set lower.tail to FALSE
+pnorm(z_score, lower.tail = FALSE)
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[Calculating areas with sample means (2)]
+In the last exercise, we calculated the area under the curve right of our sample mean of 26. 
+We found that this area had a probability of 0.023. Let's visualize this:
+
+You may notice that this distribution of sample means is much narrower than the distribution of observations of individual hipsters. 
+How would you interpret the red area?
+
+Answer : The red area is the probability of obtaining the sample with a mean beard length equal or larger than 26 millimiter based on
+a sample of 50 hipsters.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[Sampling distributions and proportions]
+
+<code>
+# sample proportion
+proportion_hipsters <- 0.10
+
+# standard deviation of the sampling distribution
+sample_sd <- sqrt((proportion_hipsters * (1 - proportion_hipsters))/ 200)
+sample_sd
+
+--------------------------------------------------------------------------------------------------------------------------------------
+[Sampling distributions and proportions (2)]
+
+<code>
+# calculate the standard deviation of the sampling distribution and put in a variable called sample_sd
+proprotion <- 0.1
+sample_sd <- sqrt((proprotion * (1 - proprotion))/200)
+sample_sd
+
+# calculate the probability
+pnorm(0.13,mean = 0.1, sample_sd, lower.tail = FALSE)
+
