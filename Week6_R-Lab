@@ -1,0 +1,241 @@
+[Sampling]
+
+Which of the following is an example of obtaning information about a general population using a sample?
+
+Answer : Finding out what people think about organic food by asking shoppers in a supermarket.
+
+------------------------------------------------------------------------------------------------------------------------------
+[Point Estimate vs. Interval Estimate]
+
+Let's say that we know that the average exercise people do per week is somewhere between one to two hours. 
+Which is this an example of?
+
+Answer : Interval Estimation
+
+------------------------------------------------------------------------------------------------------------------------------
+[Confidence Interval With Known SD I]
+
+We know that in a normally distributed phenomenon, 95% of cases will fall within 1.96 standard deviations 
+above and below the mean. Let's see what that would look like. 
+Imagine we magically know that the world population mean for happiness has a value of 36.5, with a standard deviation of 7. 
+Let's find out where 95% of the people in the world lie.
+
+Instructions
+
+In your script, calculate the amount above and below 36.5 that 95% of the world falls
+Remember to format your calculations correctly and use () where appropriate
+
+<code>
+# above
+(36.5 + 1.96 * 7)
+
+# below
+(36.5 - 1.96 * 7)
+
+------------------------------------------------------------------------------------------------------------------------------
+[Confidence Interval With Known SD II]
+
+In the last question we demonstrated how 95% of a population fall between 1.96 standard deviations 
+above and below the population mean.
+Let's pretend we have psychic knowledge that the standard deviation of sadness in the world is 8, 
+but we need to find out what the mean is. We take a sample of 300 people. 
+Let's estimate where the population mean is likely to lie using this sample.
+
+<code>
+# Assign the sample mean to object "m"
+m <- mean(samp)
+
+# Assign the standard deviation to object "s"
+s <- 8 / sqrt(300)
+
+# Calculate the upper confidence interval
+(m + 1.96 * s)
+
+# Calculate the lower confidence interval
+(m - 1.96 * s)
+
+------------------------------------------------------------------------------------------------------------------------------
+[Calculating a Confidence Interval Without The Population Standard Deviation]
+
+Instructions
+
+The road rage level of each participant in your sample is saved in your console as rrage
+Complete the steps in your script to calculate the confidence interval for rrage
+Remember to format your calculations correctly and use () where appropriate
+
+<code>
+# Assign the sample mean to object "m"
+m <- mean(rrage)
+
+# Assign the sample standard error to object "s"
+s <- sd(rrage) / sqrt(200)
+
+# Calculate the upper 95% confidence interval
+(m + 1.9720 * s)
+
+# Calculate the lower 95% confidence interval
+(m - 1.9720 * s)
+
+------------------------------------------------------------------------------------------------------------------------------
+[Assumptions For Calculating A Confidence Interval]
+
+Which of the following is not necessarily a criteria for calculating a confidence interval using a T-distribution?
+
+Answer : Normally distributed data
+
+------------------------------------------------------------------------------------------------------------------------------
+[Calculating A Confidence Interval for a Proportion I]
+
+Instead of measuring road rage as a continuous variable, you ask a sample to simply answer "yes" or "no" to the question 
+"do you have road rage?". The outcome is saved in your console as roadrage. 
+Let's find what proportion of your sample do have road rage.
+
+Instructions
+
+In your console, check the frequency of "yes" (indicating the presence have road rage) and "no" (indicating no road rage)
+Using your script, calculate use this information to calculate what proportion of 
+your sample have road rage and assign this to the object p
+
+<code>
+# Make p the proportion of the sample with road rage 
+table(roadrage)
+p <- 70 / 200
+
+------------------------------------------------------------------------------------------------------------------------------
+[Calculating A Confidence Interval for a Proportion II]
+
+In your study you found that a proportion p of 0.35 of your sample said they have road rage. 
+The standard error of this proportion is found through square root of: p multiplied by 1 - p, divided by n. Let's try this!
+
+Instructions
+
+Add a line of code that calculates the standard error of p, and stores this as se
+Remember to format your calculations correctly and use () where appropriate
+If you want to take a look at your dataset, it is still saved in your console as roadrage
+
+<code>
+# Make p the proportion of the sample with road rage 
+p <- 70 / 200
+# Find the standard error of p
+se <- sqrt((p * (1 - p)) / 200)
+
+------------------------------------------------------------------------------------------------------------------------------
+[Calculating A Confidence Interval for a Proportion III]
+
+<code>
+# Make p the proportion of the sample with road rage 
+p <- 70 / 200
+# Find the standard error of p
+se <- sqrt( (p * (1 - p)) / 200)
+# Calculate the upper level of the confidence interval
+p + 1.96 * se
+# Calculate the lower level of the confidence interval
+p - 1.96 * se
+
+------------------------------------------------------------------------------------------------------------------------------
+[Calculating A Confidence Interval for a Proportion IV]
+
+Your road rage study suggested that a proportion of 0.375 of your sample felt that they had road rage. 
+The 95% confidence interval was from 0.308 to 0.442. What does this mean?
+
+Answer : We are 95% sure that the road rage proportion in the population will lie between 0.308 and 0.442.
+
+------------------------------------------------------------------------------------------------------------------------------
+[Other Types Of Confidence Intervals I]
+
+<code>
+# Make p the proportion of the sample with road rage 
+p <- 75 / 200
+# Find the standard error of p
+se <- sqrt( (p * (1 - p)) / 200)
+# Calculate the upper level of the 95% confidence interval
+p + 1.96 * se
+# Calculate the lower level of the 95% confidence interval
+p - 1.96 * se
+# Report the range of the 95% confidence interval
+(p + 1.96 * se) - (p - 1.96 * se)
+# Report the range of the 99% confidence interval
+(p + 2.58 * se) - (p - 2.58 * se)
+# Which has the widest range?
+99
+
+------------------------------------------------------------------------------------------------------------------------------
+[Other Types Of Confidence Intervals II]
+
+<code>
+# Assign the sample mean to object "m"
+m <- mean(rrage)
+# Assign the sample standard error to object "s"
+s <- sd(rrage) / sqrt(200)
+# Calculate the upper level of the 95% confidence interval
+m + ( 1.9720 * s )
+# Calculate the lower level of the 95% confidence interval
+m - ( 1.9720 * s)
+# Calculate the range of the 95% confidence interval
+(m + ( 1.9720 * s )) - (m - ( 1.9720 * s ))
+# Calculate the range of the 90% confidence interval
+(m + ( 1.6525 * s )) - (m - ( 1.6525 * s ))
+# Which has the widest range?
+95
+
+------------------------------------------------------------------------------------------------------------------------------
+[Other Types Of Confidence Intervals III]
+
+Which of the following confidence intervals is the most precise?
+
+Answer : 90%
+
+------------------------------------------------------------------------------------------------------------------------------
+[Other Types Of Confidence Intervals IV]
+
+Which of the following confidence intervals enables the most confidence?
+
+Answer : 99%
+
+------------------------------------------------------------------------------------------------------------------------------
+[Sample Size I]
+
+Which of the following does a large sample size reduce?
+
+Answer : The margin of error
+
+------------------------------------------------------------------------------------------------------------------------------
+[Sample Size II]
+
+You're interested in looking at how many days in the week students drink alcohol, and need to know what kind of 
+sample size to use. You know that to find this out, you need a Z-score, a margin of error and a standard deviation. 
+Let's try to establish the standard deviation first. You expect that about 95% of people will consume an alcoholic drink 
+between 1 and 6 days in the week.
+
+<code>
+# What is the expected mean number of drinking days
+mean <- (1 + 6) / 2
+mean
+# Assign standard deviation to object "s"
+s <- (mean - 1) / 2
+
+------------------------------------------------------------------------------------------------------------------------------
+[Sample Size III]
+
+<code>
+# Assign the standard deviation squared to new object "ss"
+ss <- (1.25)^2
+# Assign the value of the Z-score squared to new object "zs"
+zs <- (1.96)^2
+# Assign the value of the margin of error squared to the new object "ms"
+ms <- (0.2)^2
+# Calculate the neccessary sample size
+(ss * zs) / (ms)
+
+------------------------------------------------------------------------------------------------------------------------------
+[Sample Size IV]
+
+<code>
+# Assign the value of p(1-p) to object "p"
+p <- 0.5 * 0.5
+# Assign the value of the Z-score to new object "z"
+z <- 1.96
+# Assign the value of the margin of error squared to the new object "ms"
+ms <- (0.05)^2
+# Calculate the neccessary sample size
+(p * z^2) / (ms)
