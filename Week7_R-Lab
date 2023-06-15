@@ -1,0 +1,207 @@
+[Significance testing recap]
+
+Answer : We accept the alternative hypothesis. A p value of 0.03 means that there is only a 
+3% probability of obtaining a result eqaully or more extreme assuming that the null hypothesis is true.
+
+-----------------------------------------------------------------------------------------------------------------------------
+[Significance testing: one-sided versus two-sided]
+
+The visualization mentions the value 25.90. This is the starting value of the rejection region. 
+Consider our example mentioned above with a mean beard length of 25 and a standard error of 0.55. 
+Reproduce the value of 25.90 using the qnorm() function and assign it to the variable cut_off. 
+Make sure to round every value in this exercise to two digits.
+Print the value of cut_off to the console
+
+<code>
+# calculate the value of cut_off
+cut_off <- round(qnorm(p = 0.05, mean = 25, sd = 0.55, lower.tail= FALSE), digits = 2)
+
+# print the value of cut_off to the console
+cut_off
+
+-----------------------------------------------------------------------------------------------------------------------------
+[Significance testing: one-sided versus two-sided (2)]
+
+Instructions
+
+The visualization mentions the values of 23.92 and 26.08. These values indicate the start of the rejection region. 
+Consider our example mentioned above with a mean beard length of 25 and a standard error of 0.55. 
+Reproduce the value of 23.92 using the qnorm() function and assign it to the variable lower_cut_off. 
+Make sure to round every value in this exercise to two digits.
+Reproduce the value of 26.08 using the qnorm() function and assign it to the variable upper_cut_off. 
+Make sure to round every value in this exercise to two digits.
+Print the values of lower_cut_off and upper_cut_off to the console
+
+<code>
+# calculate the value of the variable lower_cut_off
+lower_cut_off <- round(qnorm(p = 0.025, mean  = 25, sd = 0.55, lower.tail = TRUE), digits = 2)
+
+# calculate the value of the variable upper_cut_off
+upper_cut_off <- round(qnorm(p = 0.025, mean  = 25, sd = 0.55, lower.tail = FALSE), digits = 2)
+
+# print lower_cut_off to the console
+lower_cut_off
+
+# print upper_cut_off to the console
+upper_cut_off
+
+-----------------------------------------------------------------------------------------------------------------------------
+[Significance testing: one-sided versus two-sided (3)]
+
+Instructions
+
+Imagine that we found a sample mean of 25.95 with a sample size of 40. 
+Calculate the corresponding test statistic, a z score in this case, and assign it to the variable z_value. 
+Look at the hint if you have forgotten the formula to calculate a z score. 
+Assume that the population mean and standard deviation are the same as described above. 
+Round all values in this exercise to two digits.
+Use the pnorm() function to find the probability of finding a sample mean as large or more extreme and store this 
+in the variable p_value. Round all values in this exercise to two digits.
+Print the variable p_value to the console.
+
+<code>
+# calculate the z score and assign it to a variable called z_value
+z_value <- round((25.95 - 25) / (3.5/sqrt(40)), digits = 2)
+
+# calculate the corresponding p value and store it in the variable called p_value
+p_value <- round(pnorm(z_value, lower.tail = FALSE), digits = 2)
+
+# print p_value to the console
+p_value
+
+-----------------------------------------------------------------------------------------------------------------------------
+[Significance testing: one-sided versus two-sided (4)]
+
+Instructions
+
+Imagine that we found a sample mean of 25.95 with a sample size of 40. Calculate the corresponding test statistic, 
+a z score in this case, and assign it to the variable z_value. Assume that the population mean and standard deviation are 
+the same as described above. Round all values to two decimals.
+Assume that we are doing a two-sided hypothesis test. 
+Use the function pnorm() to find the corresponding p value and print this to the console. Round the obtained p value to two decimals.
+
+<code>
+# calculate the z score and assign it to a variable called z_value
+z_value <- round((25.95 - 25) / (3.5/sqrt(40)), digits = 2)
+
+# calculate the corresponding p value and store it in the variable called p_value
+p_value<-round(pnorm(z_value, lower.tail = FALSE),digits = 2) * 2
+# print p_value to the console
+p_value
+
+-----------------------------------------------------------------------------------------------------------------------------
+[Hypothesis testing and the binomial distribution]
+
+Let's go back to an example we worked with in earlier labs: the exam of 25 multiple choice questions. 
+Is each question has 5 options, it would make logical sense that the probability of guessing 1 question correctly is 0.2. 
+Now suppose we have a student who answered 12 out of 25 correctly and we believe that this student did better than merely guessing. 
+What could be our corresponding hypotheses?
+
+Answer : H0 : p = 0.20, H1 : p > 0.20
+
+-----------------------------------------------------------------------------------------------------------------------------
+[Hypothesis testing and the binomial distribution (2)]
+
+Instructions
+
+Imagine we have a student who got 12 out of 25 questions correctly and the probability of guessing a question correctly 
+is 0.20. Calculate the probability of answering 12 or more questions correctly given that the student is merely guessing 
+and store this in the variable p_value. Round this probability to two digits. Remember that we are doing a one-sided hypothesis test.
+Print p_value to the console
+Assign your conclusion whether H0 (the student is merely guessing) is accepted or rejected to the variable conclusion, 
+that is, assign either the value "accepted" or the value "rejected" to the variable conclusion.
+
+<code>
+#' calculate the probability of answering 12 ore more questions correctly given
+p_value <- round(1 - pbinom(12, size = 25, prob = 0.20), digits = 2)
+#' that the student is merely guessing and store this in the variable p_value
+
+# print the probability calculated above to the console
+p_value
+
+# assign either accepted or rejected to the variable conclusion
+conclusion <- "rejected"
+
+-----------------------------------------------------------------------------------------------------------------------------
+[Hypothesis testing and the binomial distribution (3)]
+
+<code>
+# calculate the mean (expected probability) and assign it to a variable called average
+average <- 0.2
+
+# calculate the standard error and assign it to a variable called se
+se <- round(sqrt(0.2*(1-0.2)/25), digits = 2)
+se
+
+# calculate the z value and assign it to a variable z_value
+z_value <- round((12/25 - 0.2) / se, digits = 2)
+z_value
+
+# calculate the p value and store it in a variable p_value
+p_value <- round(pnorm(z_value, lower.tail = FALSE), digits = 2)
+
+# print p_value to the console
+p_value
+
+-----------------------------------------------------------------------------------------------------------------------------
+[The t distribution]
+
+<code>
+# calculate the critical cut off value and store it in a variable called cut_off
+help(qt)
+cut_off <- qt(p = 0.05, df = 49, lower.tail = FALSE)
+
+# print cut_off to the console
+cut_off
+
+-----------------------------------------------------------------------------------------------------------------------------
+[The t distribution (2)]
+
+<code>
+# calculate the standard error and store it in the variable se
+se <- round((5/sqrt(50)),digits = 2)
+se
+
+# calculate the t value and store it in a variable called t_value
+t_value <- round(((186.5 - 185)/se), digits = 2)
+t_value
+
+# calculate the p value and store it in a variable called p_value
+p_value <- round(pt(t_value, df = 49, lower.tail= FALSE), digits = 2)
+
+# print p_value to the console
+p_value
+
+-----------------------------------------------------------------------------------------------------------------------------
+[Confidence interval and significance testing]
+
+<code>
+# calculate the t value and store it in the variable t_value
+t_value <- round(qt(0.975, df=49), digits=2)
+t_value
+
+#' calculate a 95% confidence interval as a vector with two values and store it in a
+#' a variable called conf_interval
+conf_interval <- 186.5 + c(-1,1) * t_value * 0.71
+# print conf_interval to the console
+conf_interval
+
+-----------------------------------------------------------------------------------------------------------------------------
+[Confidence interval and significance testing (2)]
+In the last exercise you would have probably calculated a confidence interval with a lower bound of 185.07 and an upper bound of 187.93.
+This confidence interval does not contain the population mean of 185. What does this mean?
+
+Answer : This means that we are 95% confident that our confidence interval does not contain the population mean
+
+-----------------------------------------------------------------------------------------------------------------------------
+[Confidence interval and significance testing (3)]
+So in the last exercise we saw that our confidence interval did not contain our population parameter. 
+By checking whether the confidence interval contains our population mean, we are essentially doing the same 
+as testing a hypothesis. For instance, we started out with assuming the population mean of the height of Dutch males 
+is 185 centimers. This could be our null hypothesis. Our alternative hypothesis could be the fact that the Dutch male height
+is different from 185 centimeters. Considering the confidence interval of 185.07 and 187.93 and a population mean of 185, 
+would you reject the null hypothesis?
+
+Answer : Yes you would reject the null hypothesis because the confidence level does not contain the population mean.
+
+
